@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f4">
+  <title>Monthlight — plan the month ahead</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="wordmark" href="index.html" aria-label="Monthlight home"><span class="wordmark-mark">M</span><span>monthlight</span></a>
+      <div class="topbar-actions"><button class="text-button personal-toggle" id="personalToggle" type="button" aria-pressed="true">Personal: shown</button><button class="text-button" id="shareButton" type="button">Share clean view</button><button class="primary-button" id="quickAddButton" type="button"><span aria-hidden="true">+</span> Add event</button></div>
+    </header>
+    <section class="workspace" aria-label="Monthly planner">
+      <div class="calendar-column">
+        <div class="calendar-heading"><div><p class="eyebrow">YOUR MONTH AT A GLANCE</p><h1 id="monthTitle">October 2026</h1></div><div class="month-controls" aria-label="Change month"><button class="icon-button" id="previousMonth" type="button" aria-label="Previous month">←</button><button class="icon-button" id="nextMonth" type="button" aria-label="Next month">→</button></div></div>
+        <div class="legend" aria-label="Importance legend"><span><i class="priority-dot priority-high"></i> High</span><span><i class="priority-dot priority-medium"></i> Medium</span><span><i class="priority-dot priority-low"></i> Low</span></div>
+        <div class="calendar-card"><div class="weekdays" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div class="calendar-grid" id="calendarGrid" role="grid" aria-label="Monthly calendar"></div></div>
+      </div>
+      <aside class="agenda-panel" aria-label="Upcoming events"><div class="agenda-intro"><p class="eyebrow">KEEP MOVING</p><h2>Coming up</h2><p class="muted-copy">Your next few things, in order.</p></div><div class="agenda-list" id="agendaList"></div><button class="outline-button" id="agendaAddButton" type="button"><span aria-hidden="true">+</span> Add something</button></aside>
+    </section>
+  </main>
+  <dialog class="event-dialog" id="eventDialog" aria-labelledby="dialogTitle"><form id="eventForm" method="dialog"><div class="dialog-topline"><p class="eyebrow">NEW PLAN</p><button class="close-button" id="closeDialog" type="button" aria-label="Close">×</button></div><h2 id="dialogTitle">Add to your month</h2><p class="dialog-date" id="dialogDate">Tuesday, 6 October</p><input id="eventDate" name="date" type="hidden"><label for="eventName">What is it?</label><input id="eventName" name="name" type="text" placeholder="e.g. Chemistry assignment" maxlength="80" required autocomplete="off"><div class="form-row"><div><label for="eventStart">Starts</label><input id="eventStart" name="start" type="time" required></div><div><label for="eventEnd">Ends</label><input id="eventEnd" name="end" type="time" required></div></div><div class="form-row"><div><label for="eventPriority">Importance</label><select id="eventPriority" name="priority"><option value="high">High</option><option value="medium" selected>Medium</option><option value="low">Low</option></select></div><div><label>Type</label><div class="segmented-control" role="group" aria-label="Event type"><button class="segment-button is-active" id="businessType" type="button" aria-pressed="true">Business</button><button class="segment-button" id="personalType" type="button" aria-pressed="false">Personal</button></div></div></div><label class="recurrence-toggle"><input id="eventRecurring" type="checkbox"><span>Does this recur?</span></label><div class="recurrence-options" id="recurrenceOptions"><label for="eventRecurrence">How often?</label><select id="eventRecurrence" name="recurrence"><option value="weekly">Every week</option><option value="biweekly">Every 2 weeks</option><option value="monthly">Every month</option></select></div><p class="form-error" id="eventError" role="alert"></p><button class="primary-button dialog-submit" type="submit">Save event <span aria-hidden="true">↗</span></button></form></dialog>
+  <script src="calendar.js"></script>
+</body>
+</html>
